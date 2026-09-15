@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kaggle Training Setup</title>
+<meta name="description" content="Where to generate a Kaggle API token for Game Bot Creator's Kaggle training provider, and how it compares to Colab." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAFAF9;
+    --ink: #1C1B1F;
+    --muted: #6B6870;
+    --accent: #6F42F5;
+    --accent-soft: #F0ECFE;
+    --line: #E4E1E8;
+    --card: #FFFFFF;
+    --pro: #1F8A57;
+    --pro-soft: #E7F6EE;
+    --con: #B4483A;
+    --con-soft: #FBEAE7;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #17151C;
+      --ink: #F2F0F5;
+      --muted: #9C97A8;
+      --accent: #A98CFF;
+      --accent-soft: #241F33;
+      --line: #2E2A3B;
+      --card: #1D1A24;
+      --pro: #5FCB93;
+      --pro-soft: #16261E;
+      --con: #E28376;
+      --con-soft: #2B1C1B;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #17151C;
+    --ink: #F2F0F5;
+    --muted: #9C97A8;
+    --accent: #A98CFF;
+    --accent-soft: #241F33;
+    --line: #2E2A3B;
+    --card: #1D1A24;
+    --pro: #5FCB93;
+    --pro-soft: #16261E;
+    --con: #E28376;
+    --con-soft: #2B1C1B;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", -apple-system, "Segoe UI", sans-serif;
+    line-height: 1.55;
+    margin: 0;
+    padding: 64px 24px 96px;
+  }
+  main {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .eyebrow {
+    font-family: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 14px;
+  }
+  h1 {
+    font-size: clamp(28px, 4vw, 36px);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 0 0 12px;
+    text-wrap: balance;
+  }
+  .lede {
+    color: var(--muted);
+    font-size: 16.5px;
+    max-width: 58ch;
+    margin: 0 0 12px;
+  }
+  .why {
+    background: var(--accent-soft);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 14.5px;
+    color: var(--ink);
+    margin: 28px 0 48px;
+  }
+  .why b { color: var(--accent); }
+
+  .step {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 4px 20px;
+    margin: 0 0 8px;
+  }
+  .step-num {
+    grid-row: span 2;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 600;
+    font-size: 15px;
+  }
+  .step h2 {
+    font-size: 21px;
+    font-weight: 600;
+    margin: 6px 0 0;
+    letter-spacing: -0.005em;
+  }
+  .step-body {
+    grid-column: 2;
+    color: var(--ink);
+    font-size: 15.5px;
+  }
+  .step-body p { margin: 10px 0; }
+  .step-body ol {
+    margin: 10px 0;
+    padding-left: 20px;
+  }
+  .step-body li { margin: 6px 0; }
+  kbd, .ui {
+    font-family: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+    font-size: 0.92em;
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid var(--line);
+    margin: 44px 0;
+  }
+
+  h2.section {
+    font-size: 21px;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+    margin: 0 0 6px;
+  }
+  .section-lede {
+    color: var(--muted);
+    font-size: 14.5px;
+    margin: 0 0 20px;
+    max-width: 58ch;
+  }
+
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 0 0 20px;
+  }
+  @media (max-width: 620px) {
+    .compare { grid-template-columns: 1fr; }
+  }
+  .compare-col {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 18px 20px;
+  }
+  .compare-col h3 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 17px;
+    margin: 0 0 2px;
+  }
+  .compare-col .tag {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11.5px;
+    color: var(--muted);
+    margin: 0 0 12px;
+  }
+  .compare-col ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .compare-col li {
+    display: grid;
+    grid-template-columns: 16px 1fr;
+    gap: 8px;
+    margin: 9px 0;
+    font-size: 14px;
+    line-height: 1.45;
+  }
+  /* Wraps each bullet's actual text (which may contain an inline .ui/kbd span
+     mid-sentence) in one box -- without this, CSS Grid's anonymous-item rule
+     splits plain text and an inline child into SEPARATE auto-placed grid items,
+     which land in different cells instead of flowing as one paragraph. */
+  .compare-col li .li-text {
+    display: block;
+  }
+  .compare-col li::before {
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.7;
+    text-align: center;
+    border-radius: 4px;
+  }
+  .compare-col li.pro::before {
+    content: "+";
+    color: var(--pro);
+    background: var(--pro-soft);
+  }
+  .compare-col li.con::before {
+    content: "\2212";
+    color: var(--con);
+    background: var(--con-soft);
+  }
+
+  .done {
+    margin-top: 44px;
+    padding: 20px 24px;
+    border: 1px solid var(--accent);
+    border-radius: 12px;
+    background: var(--accent-soft);
+  }
+  .done h2 {
+    font-size: 17px;
+    margin: 0 0 8px;
+  }
+  .done p { margin: 0 0 8px; font-size: 15px; color: var(--ink); }
+  .done p:last-child { margin-bottom: 0; }
+
+  footer {
+    margin-top: 56px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+</style>
+</head>
+<body>
+<main>
+  <p class="eyebrow">Game Bot Creator &middot; Settings &rarr; Computer Vision Training</p>
+  <h1>Kaggle Training Setup</h1>
+  <p class="lede">One token to turn on Kaggle as a training provider, so training a detection model happens on Kaggle's own servers and shows up as a trackable job instead of a Colab tab you have to babysit.</p>
+
+  <div class="why"><b>You don't need this at all if Colab works for you.</b> Colab is the default and needs no account or token. Kaggle is the alternative for training runs you'd rather not sit and watch — see the comparison below before setting it up.</div>
+
+  <section class="step">
+    <div class="step-num">1</div>
+    <h2>Generate a Kaggle API token</h2>
+    <div class="step-body">
+      <p>Go to <span class="ui">kaggle.com/settings/api</span> (or click <span class="ui">Create account</span> next to Game Bot Creator's Training provider dropdown if you don't have a Kaggle account yet, then come back to this URL once you're signed in).</p>
+      <ol>
+        <li>Find the <span class="ui">API</span> section of the page.</li>
+        <li>Click <span class="ui">Create New Token</span>.</li>
+        <li>Kaggle generates a single token string starting with <kbd>KGAT_&hellip;</kbd> — copy it.</li>
+      </ol>
+      <p>This is Kaggle's newer single-token credential, not the older <span class="ui">kaggle.json</span> file (the one with a separate username and key) some older guides still describe — if a page mentions "Legacy API Credentials" or a downloaded <span class="ui">kaggle.json</span>, that's the wrong one for this.</p>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <section class="step">
+    <div class="step-num">2</div>
+    <h2>Paste it into Game Bot Creator</h2>
+    <div class="step-body">
+      <p>In the Settings tab's <span class="ui">Computer Vision Training</span> group, set <span class="ui">Training provider</span> to <span class="ui">Kaggle</span> — a <span class="ui">Kaggle API token</span> field appears below it. Paste the token in. That's the whole setup; no separate username field.</p>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <h2 class="section">Kaggle vs. Colab</h2>
+  <p class="section-lede">Both train the exact same notebook and produce the exact same model file — the difference is entirely in how hands-on the process is.</p>
+
+  <div class="compare">
+    <div class="compare-col">
+      <h3>Kaggle</h3>
+      <p class="tag">scripted &middot; needs a token</p>
+      <ul>
+        <li class="pro"><span class="li-text">Fully automated: Game Bot Creator pushes the dataset, trains, and downloads the finished model for you — no manual upload or download step.</span></li>
+        <li class="pro"><span class="li-text">Tracked as a job in the Jobs tab, with live status and the notebook's own training log in one place.</span></li>
+        <li class="pro"><span class="li-text">Keeps training on Kaggle's servers if you close Game Bot Creator — a still-running job picks back up automatically next time you open it.</span></li>
+        <li class="pro"><span class="li-text">Cancelling the job from the Jobs tab also stops the run on Kaggle, no separate cleanup.</span></li>
+        <li class="con"><span class="li-text">One-time setup: a free Kaggle account plus generating the token above.</span></li>
+        <li class="con"><span class="li-text">Kaggle's free GPU time is limited on a rolling weekly basis — see your quota at <span class="ui">kaggle.com/settings</span> if you train often.</span></li>
+      </ul>
+    </div>
+    <div class="compare-col">
+      <h3>Colab</h3>
+      <p class="tag">manual &middot; no account needed</p>
+      <ul>
+        <li class="pro"><span class="li-text">Nothing to set up — Game Bot Creator just opens the notebook in your browser and you click through it.</span></li>
+        <li class="pro"><span class="li-text">No Kaggle account or token required at all.</span></li>
+        <li class="con"><span class="li-text">Hands-on: you click a button inside the notebook to upload the dataset, and download the finished model yourself when it's done.</span></li>
+        <li class="con"><span class="li-text">Needs the browser tab open for the whole run — closing it, or the tab disconnecting, interrupts training with nothing to resume from.</span></li>
+        <li class="con"><span class="li-text">Free-tier GPU access isn't guaranteed and can disconnect after a period of inactivity, a real risk on a run that takes hours.</span></li>
+        <li class="con"><span class="li-text">No progress tracking inside Game Bot Creator — everything happens in the separate Colab tab.</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="done">
+    <h2>Back in Game Bot Creator</h2>
+    <p>With <span class="ui">Training provider</span> set to Kaggle and the token pasted in, <span class="ui">Start Training</span> on any project in the AI tab now hands off to Kaggle instead of Colab — track it from the Jobs tab.</p>
+  </div>
+
+  <footer>Game Bot Creator &middot; Computer Vision Training setup</footer>
+</main>
+</body>
+</html>
