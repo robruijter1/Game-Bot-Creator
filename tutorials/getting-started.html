@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Getting Started</title>
+<meta name="description" content="From creating a config to running your first scenario — the full walkthrough, for both Windows and Android." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAFAF9;
+    --ink: #1C1B1F;
+    --muted: #6B6870;
+    --accent: #6F42F5;
+    --accent-soft: #F0ECFE;
+    --line: #E4E1E8;
+    --card: #FFFFFF;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #17151C;
+      --ink: #F2F0F5;
+      --muted: #9C97A8;
+      --accent: #A98CFF;
+      --accent-soft: #241F33;
+      --line: #2E2A3B;
+      --card: #1D1A24;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #17151C;
+    --ink: #F2F0F5;
+    --muted: #9C97A8;
+    --accent: #A98CFF;
+    --accent-soft: #241F33;
+    --line: #2E2A3B;
+    --card: #1D1A24;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", -apple-system, "Segoe UI", sans-serif;
+    line-height: 1.55;
+    margin: 0;
+    padding: 64px 24px 96px;
+  }
+  main { max-width: 720px; margin: 0 auto; }
+  .eyebrow {
+    font-family: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 14px;
+  }
+  h1 {
+    font-size: clamp(28px, 4vw, 36px);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 0 0 12px;
+    text-wrap: balance;
+  }
+  .lede { color: var(--muted); font-size: 16.5px; max-width: 60ch; margin: 0 0 24px; }
+
+  /* ── platform toggle ─────────────────────────────────────────────────── */
+  .platform-bar {
+    position: sticky;
+    top: 16px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 5px;
+    margin: 0 0 36px;
+    width: fit-content;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  }
+  .platform-bar .label {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11.5px;
+    color: var(--muted);
+    padding-left: 10px;
+    white-space: nowrap;
+  }
+  .platform-btn {
+    font: inherit;
+    font-size: 13.5px;
+    font-weight: 600;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    padding: 7px 16px;
+    border-radius: 999px;
+    cursor: pointer;
+  }
+  .platform-btn.active { background: var(--accent); color: #fff; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .platform-btn.active { color: #17151C; }
+  }
+  :root[data-theme="dark"] .platform-btn.active { color: #17151C; }
+
+  [data-only] { display: none; }
+  html[data-platform="windows"] [data-only="windows"],
+  html[data-platform="android"] [data-only="android"] { display: block; }
+  html[data-platform="windows"] li[data-only="windows"],
+  html[data-platform="android"] li[data-only="android"] { display: list-item; }
+
+  .why {
+    background: var(--accent-soft);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 14.5px;
+    color: var(--ink);
+    margin: 16px 0;
+  }
+  .why b { color: var(--accent); }
+
+  .part {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 4px 20px;
+    margin: 0 0 8px;
+  }
+  .part-num {
+    grid-row: span 2;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 600;
+    font-size: 17px;
+  }
+  .part h2 { font-size: 22px; font-weight: 600; margin: 8px 0 0; letter-spacing: -0.005em; }
+  .part-body { grid-column: 2; color: var(--ink); font-size: 15.5px; }
+  .part-body p { margin: 10px 0; }
+  .part-body h3 {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+    margin: 20px 0 8px;
+  }
+  .part-body ol, .part-body ul { margin: 8px 0; padding-left: 22px; }
+  .part-body li { margin: 7px 0; }
+  kbd, .ui {
+    font-family: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+    font-size: 0.92em;
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  .divider { border: none; border-top: 1px solid var(--line); margin: 44px 0; }
+
+  .done {
+    margin-top: 44px;
+    padding: 20px 24px;
+    border: 1px solid var(--accent);
+    border-radius: 12px;
+    background: var(--accent-soft);
+  }
+  .done h2 { font-size: 17px; margin: 0 0 10px; }
+  .done ul { margin: 0; padding-left: 20px; }
+  .done li { margin: 6px 0; font-size: 14.5px; }
+
+  footer { margin-top: 56px; color: var(--muted); font-size: 13px; }
+</style>
+</head>
+<body>
+<main>
+  <p class="eyebrow">Game Bot Creator &middot; Loaded config &rarr; +</p>
+  <h1>Getting Started</h1>
+  <p class="lede">Everything from creating a config to watching the bot run your first scenario. Almost all of it works identically on Windows and Android — the toggle below switches the few parts that don't.</p>
+
+  <div class="platform-bar" id="platformBar">
+    <span class="label">I'm running the game on</span>
+    <button class="platform-btn" data-set="windows">Windows</button>
+    <button class="platform-btn" data-set="android">Android (emulator)</button>
+  </div>
+
+  <section class="part">
+    <div class="part-num">1</div>
+    <h2>Create a config</h2>
+    <div class="part-body">
+      <p>A config holds one game's whole setup — its screens, actions, and scenarios. Click the <span class="ui">+</span> button next to the <span class="ui">Loaded config</span> dropdown at the top of the window.</p>
+      <ol>
+        <li>Type a name for the config and confirm.</li>
+        <li>Type the name of the application/game it's for (free text, shown later in the Configs tab).</li>
+      </ol>
+      <p>Game Bot Creator immediately asks how the bot should reach this game — that's Part 2, next.</p>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <section class="part">
+    <div class="part-num">2</div>
+    <h2>Connect it to your game</h2>
+    <div class="part-body">
+      <p>Pick <span class="ui">Windows (a linked desktop window)</span> or <span class="ui">Android (via emulator)</span> — this can't be changed later without recapturing everything, so pick whichever matches how you actually play.</p>
+
+      <div data-only="windows">
+        <h3>Windows</h3>
+        <ol>
+          <li>Make sure the game is already open somewhere on screen.</li>
+          <li>Pick it from the list of open windows, or click <span class="ui">Later</span> to link one afterward from the Screen Editor's <span class="ui">Link Window…</span> button, once the game is actually running.</li>
+        </ol>
+        <div class="why"><b>For best results</b>, run the game windowed or borderless-windowed rather than exclusive fullscreen — exclusive fullscreen can block the window from being captured at all. Use as large a window size as you comfortably can; bigger, more detailed captures hold up better if you ever move this config to a different PC/resolution.</div>
+      </div>
+
+      <div data-only="android">
+        <h3>Android</h3>
+        <p>Android mode needs the free <span class="ui">LDPlayer</span> emulator, with your game already installed inside it:</p>
+        <ol>
+          <li>Download and install LDPlayer (a button for this is right in the dialog if it isn't found automatically).</li>
+          <li>Launch LDPlayer and install your game inside it — via its own app store, or an APK.</li>
+          <li>In that LDPlayer instance: <span class="ui">Settings → Other settings → ADB debugging</span>, set to <span class="ui">Open local connection</span> (one-time, per instance).</li>
+          <li>Back in Game Bot Creator, click <span class="ui">Continue</span> — it picks up your LDPlayer install automatically.</li>
+        </ol>
+        <p>Then:</p>
+        <ol>
+          <li>Pick which LDPlayer instance this config uses (skipped automatically if you only have one).</li>
+          <li>Pick the game's package from the list of installed apps — or click <span class="ui">Later</span> to finish both of these afterward from the Configs tab's <span class="ui">Link Instances…</span> button.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <section class="part">
+    <div class="part-num">3</div>
+    <h2>Build your first screens</h2>
+    <div class="part-body">
+      <p>The <span class="ui">Screen Editor</span> tab is where you teach Game Bot Creator to recognize each distinct screen in your game, and what it can do on each one. This example builds two screens — a <span class="ui">Home</span> screen and one it can navigate to and back from.</p>
+
+      <div class="why" data-only="android"><b>Android note:</b> every capture below pulls a screenshot from your linked LDPlayer instance instead of your physical screen — otherwise this whole part works exactly the same as Windows.</div>
+
+      <h3>The Home screen</h3>
+      <ol>
+        <li>Click <span class="ui">+ Add</span>, name it <kbd>Home</kbd>.</li>
+        <li>Select the <span class="ui">screen_marker</span> row in the table and click <span class="ui">Recapture</span>: drag a box around a small, unique part of this screen that's always visible (a logo or title works well), then drag a slightly larger box around where it should be searched for (or press <kbd>Esc</kbd> to auto-pad around it).</li>
+        <li>Click <span class="ui">Set as Home</span> — the screen the bot treats as its home base and falls back to for recovery.</li>
+      </ol>
+
+      <h3>A second screen</h3>
+      <ol>
+        <li>Click <span class="ui">+ Add</span> again, give it a name (e.g. <kbd>Farm</kbd>).</li>
+        <li>Capture its marker the same way — something only visible on this screen.</li>
+        <li>Click <span class="ui">+ Add Action</span>, choose <span class="ui">Back</span>, and set how the game actually leaves this screen (an image button, a fixed point, or a key press like <kbd>Esc</kbd>). Every screen except Home needs one.</li>
+        <li>Click <span class="ui">+ Add Action</span> again, choose <span class="ui">Click Image</span>, and drag a box around a button that does something here (e.g. collects a resource) — name it.</li>
+      </ol>
+
+      <h3>Wire the navigation</h3>
+      <ol>
+        <li>Select <span class="ui">Home</span> in the list.</li>
+        <li>Click <span class="ui">+ Add Action</span>, choose <span class="ui">Navigate</span>, drag a box around whatever button on Home opens the second screen, name it, and pick that screen as the destination.</li>
+      </ol>
+      <p>That's enough for the bot to path from Home to your second screen, act, and find its way back — automatically.</p>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <section class="part">
+    <div class="part-num">4</div>
+    <h2>Build a scenario</h2>
+    <div class="part-body">
+      <p>A scenario tells the bot what to actually go do, on a repeating basis. Open the <span class="ui">Scenario Editor</span> tab.</p>
+      <ol>
+        <li>Click <span class="ui">+ Add</span> — a new scenario is created and selected.</li>
+        <li>Name it, and set a <span class="ui">Cooldown seconds</span> — how long to wait after it finishes before it can run again.</li>
+        <li>Click <span class="ui">+ Add Step</span>: set <span class="ui">Navigate to:</span> your second screen, and check the action you added there.</li>
+      </ol>
+      <p>There's no Save button — every change here autosaves within about half a second. Each step's own navigation already computes the shortest path from wherever the bot currently is, so this scenario can run from anywhere reachable, not just from Home.</p>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <section class="part">
+    <div class="part-num">5</div>
+    <h2>Turn it on and run it</h2>
+    <div class="part-body">
+      <p>A config only runs once it's marked <span class="ui">Active</span> — this keeps editing separate from running.</p>
+      <ol>
+        <li>Open the <span class="ui">Configs</span> tab and tick <span class="ui">Active</span> next to your config.</li>
+        <li data-only="android">If you clicked <span class="ui">Later</span> back in Part 2, link an LDPlayer instance now via <span class="ui">Link Instances…</span> on the same row — <span class="ui">Active</span> stays disabled until at least one is linked.</li>
+        <li>Switch to the <span class="ui">Start</span> tab and click <span class="ui">Start</span> on your config's row (or <span class="ui">Start All</span>).</li>
+      </ol>
+      <p>The bot detects the current screen, paths to your second screen, runs the action, comes back, and waits out the cooldown before doing it again. Watch it happen live in the Logs pane right there on the Start tab.</p>
+      <div class="why" data-only="windows"><b>One at a time on Windows:</b> only one Windows-mode config can be Active at once, since they'd fight over the same physical screen/input.</div>
+      <div class="why" data-only="android"><b>Android scales further:</b> link a config to several LDPlayer instances and it runs identically in parallel across all of them — and more than one Android config can be Active at once, each on its own instance.</div>
+    </div>
+  </section>
+
+  <div class="done">
+    <h2>Where to go from here</h2>
+    <ul>
+      <li><span class="ui">Check</span> (in the Add Action picker) detects an image without clicking it — useful as a prerequisite, e.g. "only run this scenario if a resource icon is full."</li>
+      <li><b>Alternates</b>, on a flow step, watch for an unexpected popup (like an ad) mid-step and react without aborting the whole scenario.</li>
+      <li><b>Depends on</b>, on an individual action, makes it wait for another action in the same step to have already fired first.</li>
+      <li>The <b>AI</b> tab trains an object-detection model instead of matching a fixed image — see the <a href="training-a-model.html" style="color:var(--accent)">Training a Detection Model</a> and <a href="kaggle-training-setup.html" style="color:var(--accent)">Kaggle Training Setup</a> tutorials.</li>
+      <li>The <b>Jobs</b> tab tracks every long-running background job — training runs, auto-labeling — with its own progress log.</li>
+    </ul>
+  </div>
+
+  <footer>Game Bot Creator &middot; Getting Started</footer>
+</main>
+
+<script>
+(function () {
+  var KEY = 'gbc-tutorial-platform';
+  var root = document.documentElement;
+  var buttons = document.querySelectorAll('.platform-btn');
+  function apply(platform) {
+    root.setAttribute('data-platform', platform);
+    buttons.forEach(function (b) {
+      b.classList.toggle('active', b.dataset.set === platform);
+    });
+  }
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () {
+      apply(b.dataset.set);
+      try { localStorage.setItem(KEY, b.dataset.set); } catch (e) {}
+    });
+  });
+  var saved = null;
+  try { saved = localStorage.getItem(KEY); } catch (e) {}
+  apply(saved === 'android' ? 'android' : 'windows');
+})();
+</script>
+</body>
+</html>
