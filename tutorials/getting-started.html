@@ -196,12 +196,12 @@
     <div class="part-num">1</div>
     <h2>Create a config</h2>
     <div class="part-body">
-      <p>A config holds one game's whole setup — its screens, actions, and scenarios. Click the <span class="ui">+</span> button next to the <span class="ui">Loaded config</span> dropdown at the top of the window.</p>
+      <p>A config holds one game's whole setup — its scenes, actions, and scenarios. Click the <span class="ui">+</span> button next to the <span class="ui">Loaded config</span> dropdown at the top of the window (or <span class="ui">Create Your First Config…</span> on the Start tab if you have none yet).</p>
       <ol>
-        <li>Type a name for the config and confirm.</li>
-        <li>Type the name of the application/game it's for (free text, shown later in the Configs tab).</li>
+        <li>Type a name for the config (the game's name works well) and confirm.</li>
+        <li>Optionally type the name of the game it's for (shown later in the Configs tab).</li>
       </ol>
-      <p>Game Bot Creator immediately asks how the bot should reach this game — that's Part 2, next.</p>
+      <p>Game Bot Creator then asks how the bot should reach this game — that's Part 2. Nothing is saved until you finish that step, so cancelling leaves no half-made config behind.</p>
     </div>
   </section>
 
@@ -211,20 +211,20 @@
     <div class="part-num">2</div>
     <h2>Connect it to your game</h2>
     <div class="part-body">
-      <p>Pick <span class="ui">Windows (a linked desktop window)</span> or <span class="ui">Android (via emulator)</span> — this can't be changed later without recapturing everything, so pick whichever matches how you actually play.</p>
+      <p>Pick <span class="ui">Windows (a linked desktop window)</span> or <span class="ui">Android (emulator or device)</span> — this can't be changed later without recapturing everything, so pick whichever matches how you actually play.</p>
 
       <div data-only="windows">
         <h3>Windows</h3>
         <ol>
           <li>Make sure the game is already open somewhere on screen.</li>
-          <li>Pick it from the list of open windows, or click <span class="ui">Later</span> to link one afterward from the Screen Editor's <span class="ui">Link Window…</span> button, once the game is actually running.</li>
+          <li>Pick it from the list of open windows, or click <span class="ui">Later</span> to link one afterward from the Scene Editor's <span class="ui">Link Window…</span> button, once the game is actually running.</li>
         </ol>
         <div class="why"><b>For best results</b>, run the game windowed or borderless-windowed rather than exclusive fullscreen — exclusive fullscreen can block the window from being captured at all. Use as large a window size as you comfortably can; bigger, more detailed captures hold up better if you ever move this config to a different PC/resolution.</div>
       </div>
 
       <div data-only="android">
         <h3>Android</h3>
-        <p>Android mode needs the free <span class="ui">LDPlayer</span> emulator, with your game already installed inside it:</p>
+        <p>Pick where the game runs: <span class="ui">LDPlayer</span>, another detected emulator (MuMu, MEmu, BlueStacks), or <span class="ui">Other ADB device</span> for a phone or tablet. With LDPlayer, your game must already be installed inside it:</p>
         <ol>
           <li>Download and install LDPlayer (a button for this is right in the dialog if it isn't found automatically).</li>
           <li>Launch LDPlayer and install your game inside it — via its own app store, or an APK.</li>
@@ -233,8 +233,8 @@
         </ol>
         <p>Then:</p>
         <ol>
-          <li>Pick which LDPlayer instance this config uses (skipped automatically if you only have one).</li>
-          <li>Pick the game's package from the list of installed apps — or click <span class="ui">Later</span> to finish both of these afterward from the Configs tab's <span class="ui">Link Instances…</span> button.</li>
+          <li>Pick which instance this config uses (skipped automatically if you only have one).</li>
+          <li>Pick the game's package from the list of installed apps — or click <span class="ui">Later</span> to finish both of these afterward from the Configs tab's <span class="ui">Link Devices…</span> button.</li>
         </ol>
       </div>
     </div>
@@ -244,33 +244,33 @@
 
   <section class="part">
     <div class="part-num">3</div>
-    <h2>Build your first screens</h2>
+    <h2>Build your first scenes</h2>
     <div class="part-body">
-      <p>The <span class="ui">Screen Editor</span> tab is where you teach Game Bot Creator to recognize each distinct screen in your game, and what it can do on each one. This example builds two screens — a <span class="ui">Home</span> screen and one it can navigate to and back from.</p>
+      <p>After creating the config you land in the <span class="ui">Scene Editor</span>. A <b>scene</b> is one distinct screen or area of your game; here you teach Game Bot Creator to recognize each one, and what it can do there. This example builds two scenes — a <span class="ui">Home</span> scene and one it can navigate to and back from.</p>
 
-      <div class="why" data-only="android"><b>Android note:</b> every capture below pulls a screenshot from your linked LDPlayer instance instead of your physical screen — otherwise this whole part works exactly the same as Windows.</div>
+      <div class="why" data-only="android"><b>Android note:</b> every capture below pulls a screenshot from your linked device instead of your physical screen — otherwise this whole part works exactly the same as Windows.</div>
 
-      <h3>The Home screen</h3>
+      <h3>The Home scene</h3>
       <ol>
         <li>Click <span class="ui">+ Add</span>, name it <kbd>Home</kbd>.</li>
-        <li>Select the <span class="ui">screen_marker</span> row in the table and click <span class="ui">Recapture</span>: drag a box around a small, unique part of this screen that's always visible (a logo or title works well), then drag a slightly larger box around where it should be searched for (or press <kbd>Esc</kbd> to auto-pad around it).</li>
-        <li>Click <span class="ui">Set as Home</span> — the screen the bot treats as its home base and falls back to for recovery.</li>
+        <li>The <span class="ui">Scene Marker</span> row is selected; click <span class="ui">Capture</span>: drag a box around a small, unique part of this scene that's always visible (a logo or title works well), then drag a slightly larger box around where it should be searched for (or press <kbd>Esc</kbd> to skip and search a little around it).</li>
+        <li>Click <span class="ui">Set as Home</span> — the scene the bot treats as its home base and falls back to for recovery.</li>
       </ol>
 
-      <h3>A second screen</h3>
+      <h3>A second scene</h3>
       <ol>
         <li>Click <span class="ui">+ Add</span> again, give it a name (e.g. <kbd>Farm</kbd>).</li>
-        <li>Capture its marker the same way — something only visible on this screen.</li>
-        <li>Click <span class="ui">+ Add Action</span>, choose <span class="ui">Back</span>, and set how the game actually leaves this screen (an image button, a fixed point, or a key press like <kbd>Esc</kbd>). Every screen except Home needs one.</li>
-        <li>Click <span class="ui">+ Add Action</span> again, choose <span class="ui">Click Image</span>, and drag a box around a button that does something here (e.g. collects a resource) — name it.</li>
+        <li>Capture its marker the same way — something only visible on this scene.</li>
+        <li>New scenes already get a <span class="ui">Back</span> action that presses <kbd>Esc</kbd>. If your game leaves this scene some other way (a close button, a fixed point), delete it and add your own via <span class="ui">+ Add Action</span> → <span class="ui">Back</span>.</li>
+        <li>Click <span class="ui">+ Add Action</span>, choose <span class="ui">Click Image</span>, and drag a box around a button that does something here (e.g. collects a resource) — name it. Press <kbd>Esc</kbd> when done; a short message confirms it's saved.</li>
       </ol>
 
       <h3>Wire the navigation</h3>
       <ol>
         <li>Select <span class="ui">Home</span> in the list.</li>
-        <li>Click <span class="ui">+ Add Action</span>, choose <span class="ui">Navigate</span>, drag a box around whatever button on Home opens the second screen, name it, and pick that screen as the destination.</li>
+        <li>Click <span class="ui">+ Add Action</span>, choose <span class="ui">Navigate</span>, drag a box around whatever button on Home opens the second scene, name it, and pick that scene as the destination.</li>
       </ol>
-      <p>That's enough for the bot to path from Home to your second screen, act, and find its way back — automatically.</p>
+      <p>A scene shown in red with ✗ isn't usable yet — select it and the panel on the right says what's missing. Once both are ✓, the bot can path from Home to your second scene, act, and find its way back — automatically.</p>
     </div>
   </section>
 
@@ -280,13 +280,13 @@
     <div class="part-num">4</div>
     <h2>Build a scenario</h2>
     <div class="part-body">
-      <p>A scenario tells the bot what to actually go do, on a repeating basis. Open the <span class="ui">Scenario Editor</span> tab.</p>
+      <p>A scenario is a list of steps — go to a scene, then run some of its actions — that the bot repeats. Open the <span class="ui">Scenario Editor</span>.</p>
       <ol>
         <li>Click <span class="ui">+ Add</span> — a new scenario is created and selected.</li>
         <li>Name it, and set a <span class="ui">Cooldown seconds</span> — how long to wait after it finishes before it can run again.</li>
-        <li>Click <span class="ui">+ Add Step</span>: set <span class="ui">Navigate to:</span> your second screen, and check the action you added there.</li>
+        <li>Under <span class="ui">Flow</span>, click <span class="ui">+ Add Step</span>: set <span class="ui">Navigate to:</span> your second scene, and check the action you added there.</li>
       </ol>
-      <p>There's no Save button — every change here autosaves within about half a second. Each step's own navigation already computes the shortest path from wherever the bot currently is, so this scenario can run from anywhere reachable, not just from Home.</p>
+      <p>There's no Save button — every change autosaves within about half a second. <span class="ui">Run Limit</span> and <span class="ui">Prerequisites</span> below the flow are optional; open them when you need them. Each step's navigation computes the shortest path from wherever the bot currently is, so this scenario can run from anywhere reachable, not just from Home.</p>
     </div>
   </section>
 
@@ -294,17 +294,18 @@
 
   <section class="part">
     <div class="part-num">5</div>
-    <h2>Turn it on and run it</h2>
+    <h2>Run it</h2>
     <div class="part-body">
-      <p>A config only runs once it's marked <span class="ui">Active</span> — this keeps editing separate from running.</p>
+      <p>The <span class="ui">Start</span> page runs <b>scenario sets</b>: a set picks which of a config's scenarios to run, and where. While your config isn't fully set up, a checklist at the top of the Start page shows what's left, with a button for each step.</p>
       <ol>
-        <li>Open the <span class="ui">Configs</span> tab and tick <span class="ui">Active</span> next to your config.</li>
-        <li data-only="android">If you clicked <span class="ui">Later</span> back in Part 2, link an LDPlayer instance now via <span class="ui">Link Instances…</span> on the same row — <span class="ui">Active</span> stays disabled until at least one is linked.</li>
-        <li>Switch to the <span class="ui">Start</span> tab and click <span class="ui">Start</span> on your config's row (or <span class="ui">Start All</span>).</li>
+        <li>Open <span class="ui">Start</span> and click <span class="ui">+ Add Scenario Set</span>.</li>
+        <li>Name the set and tick the scenarios it should run.</li>
+        <li data-only="android">Pick the device it runs on. If you clicked <span class="ui">Later</span> back in Part 2, link one first via the Configs tab's <span class="ui">Link Devices…</span>.</li>
+        <li>Click <span class="ui">Start</span> on the set's row (or <span class="ui">Start All</span>).</li>
       </ol>
-      <p>The bot detects the current screen, paths to your second screen, runs the action, comes back, and waits out the cooldown before doing it again. Watch it happen live in the Logs pane right there on the Start tab.</p>
-      <div class="why" data-only="windows"><b>One at a time on Windows:</b> only one Windows-mode config can be Active at once, since they'd fight over the same physical screen/input.</div>
-      <div class="why" data-only="android"><b>Android scales further:</b> link a config to several LDPlayer instances and it runs identically in parallel across all of them — and more than one Android config can be Active at once, each on its own instance.</div>
+      <p>The bot detects the current scene, paths to your second scene, runs the action, comes back, and waits out the cooldown before doing it again. Watch it happen live in the Logs pane on the Start page. A scenario that can't run is shown in red with the reason, and a set that can't start says why when you hover it.</p>
+      <div class="why" data-only="windows"><b>One at a time on Windows:</b> only one Windows set can run at once, since they'd fight over the same mouse and keyboard.</div>
+      <div class="why" data-only="android"><b>Android scales further:</b> link a config to several devices and give each its own scenario set — they run in parallel, one set per device.</div>
     </div>
   </section>
 
@@ -314,8 +315,9 @@
       <li><span class="ui">Check</span> (in the Add Action picker) detects an image without clicking it — useful as a prerequisite, e.g. "only run this scenario if a resource icon is full."</li>
       <li><b>Alternates</b>, on a flow step, watch for an unexpected popup (like an ad) mid-step and react without aborting the whole scenario.</li>
       <li><b>Depends on</b>, on an individual action, makes it wait for another action in the same step to have already fired first.</li>
-      <li>The <b>AI</b> tab trains an object-detection model instead of matching a fixed image — see the <a href="training-a-model.html" style="color:var(--accent)">Training a Detection Model</a> and <a href="kaggle-training-setup.html" style="color:var(--accent)">Kaggle Training Setup</a> tutorials.</li>
-      <li>The <b>Jobs</b> tab tracks every long-running background job — training runs, auto-labeling — with its own progress log.</li>
+      <li>Turn on <span class="ui">Settings → Show advanced features</span> for the AI, Maps and Jobs pages.</li>
+      <li>The <b>AI</b> page trains an object-detection model instead of matching a fixed image — see the <a href="training-a-model.html" style="color:var(--accent)">Training a Detection Model</a> and <a href="kaggle-training-setup.html" style="color:var(--accent)">Kaggle Training Setup</a> tutorials.</li>
+      <li>The <b>Maps</b> page sets up minimap navigation (Go To Waypoint, Go To Icon, Explore); the <b>Jobs</b> page tracks long-running background jobs like training runs.</li>
     </ul>
   </div>
 
