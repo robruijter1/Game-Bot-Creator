@@ -250,6 +250,8 @@
 
       <div class="why" data-only="android"><b>Android note:</b> every capture below pulls a screenshot from your linked device instead of your physical screen — otherwise this whole part works exactly the same as Windows.</div>
 
+      <p>The pinned <span class="ui">🌐 Global</span> entry at the top of the scene list isn't a real scene: actions added there work in every scene (handy for things like combat or picking up loot). You can ignore it for now.</p>
+
       <h3>The Home scene</h3>
       <ol>
         <li>Click <span class="ui">+ Add</span>, name it <kbd>Home</kbd>.</li>
@@ -299,11 +301,12 @@
       <p>The <span class="ui">Start</span> page runs <b>scenario sets</b>: a set picks which of a config's scenarios to run, and where. While your config isn't fully set up, a checklist at the top of the Start page shows what's left, with a button for each step.</p>
       <ol>
         <li>Open <span class="ui">Start</span> and click <span class="ui">+ Add Scenario Set</span>.</li>
-        <li>Name the set and tick the scenarios it should run.</li>
+        <li>Name the set. All of the config's scenarios start ticked — untick any you don't want this set to run.</li>
         <li data-only="android">Pick the device it runs on. If you clicked <span class="ui">Later</span> back in Part 2, link one first via the Configs tab's <span class="ui">Link Devices…</span>.</li>
         <li>Click <span class="ui">Start</span> on the set's row (or <span class="ui">Start All</span>).</li>
       </ol>
       <p>The bot detects the current scene, paths to your second scene, runs the action, comes back, and waits out the cooldown before doing it again. Watch it happen live in the Logs pane on the Start page. A scenario that can't run is shown in red with the reason, and a set that can't start says why when you hover it.</p>
+      <p>Selecting a set lists its scenarios on the right. Each has a <span class="ui">Run</span> checkbox to switch it on or off for that set, even while it runs. Scenarios you create later aren't added to existing sets automatically — add them with the set's wrench button.</p>
       <div class="why" data-only="windows"><b>One at a time on Windows:</b> only one Windows set can run at once, since they'd fight over the same mouse and keyboard.</div>
       <div class="why" data-only="android"><b>Android scales further:</b> link a config to several devices and give each its own scenario set — they run in parallel, one set per device.</div>
     </div>
@@ -315,6 +318,8 @@
       <li><span class="ui">Check</span> (in the Add Action picker) detects an image without clicking it — useful as a prerequisite, e.g. "only run this scenario if a resource icon is full."</li>
       <li><b>Alternates</b>, on a flow step, watch for an unexpected popup (like an ad) mid-step and react without aborting the whole scenario.</li>
       <li><b>Depends on</b>, on an individual action, makes it wait for another action in the same step to have already fired first.</li>
+      <li><b>Global actions</b> (the <span class="ui">🌐 Global</span> scene) work in every scene. Tick <span class="ui">Run in any scene (no navigation)</span> on a scenario to run them right where the bot is, without navigating — e.g. a combat scenario; other scenarios wait while it runs.</li>
+      <li><b>Background scenarios</b> (<span class="ui">Run in the background</span>) run alongside the others, only in the scenes you tick (or <span class="ui">Any scene</span>) — e.g. drinking a potion when health is low. <span class="ui">Pause while other scenarios run</span> makes one wait instead.</li>
       <li>Turn on <span class="ui">Settings → Show advanced features</span> for the AI, Maps and Jobs pages.</li>
       <li>The <b>AI</b> page trains an object-detection model instead of matching a fixed image — see the <a href="training-a-model.html" style="color:var(--accent)">Training a Detection Model</a> and <a href="kaggle-training-setup.html" style="color:var(--accent)">Kaggle Training Setup</a> tutorials.</li>
       <li>The <b>Maps</b> page sets up minimap navigation (Go To Waypoint, Go To Icon, Explore); the <b>Jobs</b> page tracks long-running background jobs like training runs.</li>
