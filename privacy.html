@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Privacy Policy</title>
+<meta name="description" content="What personal data Game Bot Creator and its license and config sharing servers process, why, for how long, and your rights." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAFAF9;
+    --ink: #1C1B1F;
+    --muted: #6B6870;
+    --accent: #6F42F5;
+    --accent-soft: #F0ECFE;
+    --line: #E4E1E8;
+    --card: #FFFFFF;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #17151C;
+      --ink: #F2F0F5;
+      --muted: #9C97A8;
+      --accent: #A98CFF;
+      --accent-soft: #241F33;
+      --line: #2E2A3B;
+      --card: #1D1A24;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #17151C;
+    --ink: #F2F0F5;
+    --muted: #9C97A8;
+    --accent: #A98CFF;
+    --accent-soft: #241F33;
+    --line: #2E2A3B;
+    --card: #1D1A24;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", -apple-system, "Segoe UI", sans-serif;
+    line-height: 1.55;
+    margin: 0;
+    padding: 64px 16px 96px;
+  }
+  main {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .eyebrow {
+    font-family: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 14px;
+  }
+  h1 {
+    font-size: clamp(28px, 4vw, 36px);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 0 0 12px;
+    text-wrap: balance;
+  }
+  .lede {
+    color: var(--muted);
+    font-size: 16.5px;
+    max-width: 58ch;
+    margin: 0 0 12px;
+  }
+  .why {
+    background: var(--accent-soft);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 15px;
+    color: var(--ink);
+    margin: 28px 0 40px;
+  }
+  .why b { color: var(--accent); }
+  h2 {
+    font-size: 21px;
+    font-weight: 600;
+    margin: 40px 0 8px;
+    letter-spacing: -0.005em;
+  }
+  p, li { font-size: 15.5px; }
+  p { margin: 10px 0; }
+  ul { margin: 10px 0; padding-left: 20px; }
+  li { margin: 6px 0; }
+  a { color: var(--accent); }
+  .table-wrap { overflow-x: auto; margin: 14px 0; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14.5px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+  }
+  th, td {
+    text-align: left;
+    vertical-align: top;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  th {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+  }
+  tr:last-child td { border-bottom: none; }
+  .ui {
+    font-family: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+    font-size: 0.92em;
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+  .divider {
+    border: none;
+    border-top: 1px solid var(--line);
+    margin: 44px 0;
+  }
+  footer {
+    margin-top: 56px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+</style>
+</head>
+<body>
+<main>
+  <p class="eyebrow">Game Bot Creator &middot; Privacy</p>
+  <h1>Privacy Policy</h1>
+  <p class="lede">What personal data Game Bot Creator and its online services process, why, how long it is kept, and what you can ask for.</p>
+
+  <div class="why"><b>Short version:</b> the app has no tracking, analytics or ads. Your configs, screenshots and logs stay on your own PC. Data only leaves your PC for license activation, for config sharing when you choose to share or download, and for AI features you set up with your own accounts. Each case is described below.</div>
+
+  <h2>Who is responsible</h2>
+  <p>Game Bot Creator is made and sold by Rob Ruijter, the Netherlands (the &ldquo;controller&rdquo; under the GDPR). For any privacy question or request, email <a href="mailto:support@gamebotcreator.com">support@gamebotcreator.com</a>.</p>
+
+  <h2>1. Buying the app</h2>
+  <p>Purchases are handled by <a href="https://gumroad.com/privacy">Gumroad</a>, which acts as the seller of record: it processes your payment and billing details under its own privacy policy. We never see your payment details. When your license key is checked, Gumroad tells our license server whether the key is valid and the email address of the purchase.</p>
+
+  <h2>2. License activation</h2>
+  <p>To activate your license, the app sends your license key and a <b>machine ID</b> to our license server (<span class="ui">license.gamebotcreator.com</span>). The machine ID is a code derived one-way from identifiers of your PC; it can&rsquo;t be turned back into those identifiers, and they are never sent themselves. The app checks the license again when it starts and when a bot starts running.</p>
+  <div class="table-wrap">
+  <table>
+    <tr><th>What</th><th>Why</th><th>Kept</th></tr>
+    <tr><td>License key + machine ID of each activated PC, with activation and last-check dates</td><td>Enforce the number of PCs per license; let you free up a PC</td><td>Until you deactivate that PC (a refund marks the license&rsquo;s PCs as revoked; ask us to delete them)</td></tr>
+    <tr><td>Usage log: time, action (activate, check, deactivate), result, a hash of the license key (never the key itself), machine ID, IP address, country, the app&rsquo;s user agent, purchase email</td><td>Support, spotting shared or stolen keys, preventing abuse</td><td>90 days, then deleted automatically</td></tr>
+  </table>
+  </div>
+  <p>Legal basis: performing the license agreement (activation) and our legitimate interest in preventing license abuse (usage log).</p>
+
+  <h2>3. Config sharing</h2>
+  <p>Sharing is optional. When you share a config, the app uploads it to our config server (<span class="ui">configs.gamebotcreator.com</span>), where <b>anyone can browse and download it</b>. Don&rsquo;t put personal information in a shared config.</p>
+  <div class="table-wrap">
+  <table>
+    <tr><th>What</th><th>Why</th><th>Kept</th></tr>
+    <tr><td>The config itself: scene and scenario files, the template images cut from your game screen, its name, game name and notes</td><td>Publishing it to other users</td><td>Until you unshare it, or it is removed after a report</td></tr>
+    <tr><td>A hash of your license key (never the key itself)</td><td>Only you can update or remove your configs; daily upload limit</td><td>As long as you have shared configs</td></tr>
+    <tr><td>Download count; reports other users send about a config (with their reason)</td><td>Showing popularity; moderation</td><td>Reports are deleted together with the config</td></tr>
+  </table>
+  </div>
+  <p>Browsing and downloading shared configs needs no account. Legal basis: your request to share (performing the service) and our legitimate interest in moderating public content.</p>
+
+  <h2>4. AI features with your own accounts</h2>
+  <p>Some features use services you connect with your own account or API key. The app sends the data <b>directly from your PC</b> to that provider; it doesn&rsquo;t pass through our servers and we never see it.</p>
+  <ul>
+    <li><b>Google Gemini</b> (AI Generate, AI Helper): your question or request, relevant help text, and game screenshots you attach (you can black out parts first).</li>
+    <li><b>Roboflow</b> (automatic labeling): the game frames you choose to label.</li>
+    <li><b>Kaggle</b> (model training): your training dataset (game frames and labels), uploaded to your own Kaggle account.</li>
+  </ul>
+  <p>That data is processed by the provider under your account and its own terms and privacy policy. Some providers may use content sent on free plans to improve their products; check their terms before you send anything sensitive.</p>
+
+  <h2>5. Update check</h2>
+  <p>The app asks GitHub whether a newer version exists, and downloads updates from GitHub. GitHub sees your IP address for these requests, under <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">its own privacy statement</a>. No personal data is sent.</p>
+
+  <h2>6. Technical logs, security and storage</h2>
+  <ul>
+    <li><b>Server logs:</b> both servers keep technical logs (time, request, IP address) to fix problems and stop abuse. They are overwritten as the logs rotate, and not kept longer than 90 days.</li>
+    <li><b>Where:</b> the servers run in the Netherlands. All traffic reaches them through <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare</a> (network security and DDoS protection), which processes IP addresses for that purpose.</li>
+    <li><b>Backups:</b> nightly backups of the server data are encrypted before they leave the server and are stored in Google Drive; the encryption keys are not stored with them. Backups are deleted after 30 days.</li>
+    <li>Connections are encrypted (HTTPS), and license keys are stored as hashes wherever the key itself isn&rsquo;t needed.</li>
+  </ul>
+  <p>We don&rsquo;t sell personal data, don&rsquo;t use it for advertising, and don&rsquo;t share it with anyone except the providers named above, which only process it to deliver their part of the service.</p>
+
+  <h2>7. Your rights</h2>
+  <p>Under the GDPR you can ask to see the personal data we hold about you, have it corrected or deleted, restrict or object to its use, and receive it in a portable format. Email <a href="mailto:support@gamebotcreator.com">support@gamebotcreator.com</a> with your license key (so we can find your data). Deleting your activations means the app has to be activated again. You can also complain to the Dutch data protection authority, the <a href="https://autoriteitpersoonsgegevens.nl/">Autoriteit Persoonsgegevens</a>.</p>
+
+  <h2>8. Changes</h2>
+  <p>If this policy changes, the new version is published on this page with a new date. Significant changes are also mentioned in the app&rsquo;s release notes.</p>
+
+  <hr class="divider" />
+  <footer>Last updated: 4 November 2026</footer>
+</main>
+</body>
+</html>
